@@ -1,0 +1,8 @@
+# Folders
+_backups
+_resources
+.vscode
+
+# Files
+old_editor.html
+*.py
