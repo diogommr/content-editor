@@ -4,5 +4,4 @@ _resources
 .vscode
 
 # Files
-old_editor.html
 *.py
