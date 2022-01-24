@@ -2857,10 +2857,10 @@ class Editor {
         // Detect direction of selection
         let selectionDirection = null;
         if (selection.anchorOffset > selection.focusOffset) {
-          console.log("→ Left to Right");
+          // console.log("→ Left to Right");
           selectionDirection = "leftToRight";
         } else if (selection.anchorOffset < selection.focusOffset) {
-          console.log("← Right to left");
+          // console.log("← Right to left");
           selectionDirection = "rightToLeft";
         }
 
@@ -2871,7 +2871,7 @@ class Editor {
         let outputText = "";
 
         // Check if selection is already formatted
-        console.log(selection);
+        // console.log(selection);
         // console.log(selectionAnchorNode);
         // console.log(selectionFocusNode);
         // console.log(selectionAnchorNodeParent.tagName === "CODE" || selectionFocusNodeParent === "CODE");
@@ -2882,7 +2882,7 @@ class Editor {
 
           // Anchor is <code>
           if (selectionAnchorNodeParent.tagName === "CODE" && selectionFocusNodeParent.tagName !== "CODE") {
-            console.log("Anchor is <code>");
+            // console.log("Anchor is <code>");
 
             // Get output text
             // <code> → OUT
@@ -2906,7 +2906,7 @@ class Editor {
 
           // Focus is <code>
           else if (selectionAnchorNodeParent.tagName !== "CODE" && selectionFocusNodeParent.tagName === "CODE") {
-            console.log("Focus is <code>");
+            // console.log("Focus is <code>");
 
             // Get output text
             // IN → <code>
@@ -2967,12 +2967,12 @@ class Editor {
 
               }
 
-              console.log(selectionAnchorNode.data);
-              console.log(`${anchorIntersection.length} → ${anchorIntersection}`);
-              console.log(paragraphIntersection);
-              console.log(`${focusIntersection.length} → ${focusIntersection}`);
-              console.log(selectionFocusNode.data);
-              console.log(outputText);
+              // console.log(selectionAnchorNode.data);
+              // console.log(`${anchorIntersection.length} → ${anchorIntersection}`);
+              // console.log(paragraphIntersection);
+              // console.log(`${focusIntersection.length} → ${focusIntersection}`);
+              // console.log(selectionFocusNode.data);
+              // console.log(outputText);
 
               // Remove selection and formatted text
               range.deleteContents();
@@ -2986,7 +2986,7 @@ class Editor {
         }
         // Neither Anchor nor Focus are <code>
         else {
-          console.log("Neither is <code>");
+          // console.log("Neither is <code>");
           // Create <code> element
           // let codeEl = document.createElement('CODE');
           // codeEl.setAttribute('class', 'language-py');
