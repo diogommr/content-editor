@@ -1293,34 +1293,29 @@ class Editor {
         modalContentEl.setAttribute('class', 'modal-content html-options-modal');
 
         // ----- Modal form elements
-        // Language - Label
-        const languageILabelEl = document.createElement('LABEL');
-        languageILabelEl.innerText = "Language";
-        // Language - Input
-        const languageInputEl = document.createElement('INPUT');
-        languageInputEl.setAttribute('type', 'text');
-        languageInputEl.value = "";
 
         // Editor Language - Label
         const editorLanguageLabelEl = document.createElement('LABEL');
-        editorLanguageLabelEl.innerText = "Editor Language";
+        editorLanguageLabelEl.innerText = "Language";
         // Editor Language - Input
         const editorLanguageSelectEl = document.createElement('SELECT');
         editorLanguageSelectEl.innerHTML = `
-			<option>C#</option>
-			<option>C++</option>
-			<option>CSS</option>
-			<option>HTML</option>
-			<option>HTTP</option>
-			<option>Javascript</option>
-			<option>Lua</option>
-			<option>Markdown</option>
-			<option>PowerShell</option>
-			<option>Python</option>
-			<option>Ruby</option>
-			<option>Shell</option>
-			<option>SQL</option>
-		`;
+          <option value="csharp">C#</option>
+          <option value="cpp">C++</option>
+          <option value="css">CSS</option>
+          <option value="html">HTML</option>
+          <option value="http">HTTP</option>
+          <option value="js">Javascript</option>
+          <option value="lua">Lua</option>
+          <option value="md">Markdown</option>
+          <option value="powershell">PowerShell</option>
+          <option value="py">Python</option>
+          <option value="rb">Ruby</option>
+          <option value="shell">Shell</option>
+          <option value="sql">SQL</option>
+          <option value="">Other</option>
+        `;
+
         editorLanguageSelectEl.addEventListener('change', function (event) {
           const selectedOption = event.target;
           select(selectedOption);
@@ -1334,12 +1329,25 @@ class Editor {
         codeInputEl.value = currentCode;
 
         // ----- Populate modal form
-        // Language
-        modalContentEl.appendChild(languageILabelEl);
-        modalContentEl.appendChild(languageInputEl);
+
         // Editor language
         modalContentEl.appendChild(editorLanguageLabelEl);
         modalContentEl.appendChild(editorLanguageSelectEl);
+
+        // get existing language value if any, otherwise, set to "Other"
+        const codeLanguageClass = codeEl.classList.value;
+        const re = /language-(\w+)/;
+        let match = null;
+        if (codeLanguageClass != "") {
+          match = codeLanguageClass.match(re);          
+        }
+        if (match) {
+          editorLanguageSelectEl.value = match[1];
+        } else {
+          editorLanguageSelectEl.value = "";
+        }
+        
+
         // Code
         modalContentEl.appendChild(codeILabelEl);
         modalContentEl.appendChild(codeInputEl);
@@ -1352,6 +1360,12 @@ class Editor {
 
           // Replace previous code
           codeEl.innerText = html;
+          if (editorLanguageSelectEl.value) {
+            codeEl.setAttribute('class', `language-${editorLanguageSelectEl.value}`);
+          } else {
+            codeEl.setAttribute('class', ``);
+          }
+          
 
           // Close modal
           modal.close();
@@ -1391,21 +1405,22 @@ class Editor {
         let editor = {};
 
         function select(x) {
-          let optionText = x.options[x.selectedIndex].innerText;
+          let optionText = x.options[x.selectedIndex].value;
           let modes = {
-            'C#': 'text/x-csharp',
-            'C++': 'text/x-c++src',
-            'CSS': 'text/css',
-            'HTML': 'htmlmixed',
-            'HTTP': 'message/http',
-            'Javascript': 'text/javascript',
-            'Lua': 'text/x-lua',
-            'Markdown': 'text/x-markdown',
-            'PowerShell': 'application/x-powershell',
-            'Python': 'text/x-python',
-            'Ruby': 'text/x-ruby',
-            'Shell': 'text/x-sh',
-            'SQL': ' text/x-sql'
+            'csharp': 'text/x-csharp',
+            'cpp': 'text/x-c++src',
+            'css': 'text/css',
+            'html': 'htmlmixed',
+            'http': 'message/http',
+            'js': 'text/javascript',
+            'lua': 'text/x-lua',
+            'md': 'text/x-markdown',
+            'powershell': 'application/x-powershell',
+            'py': 'text/x-python',
+            'rb': 'text/x-ruby',
+            'shell': 'text/x-sh',
+            'sql': 'text/x-sql',
+            '': ''
           };
 
           editor.setOption('mode', modes[optionText]);
