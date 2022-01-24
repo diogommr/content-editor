@@ -912,9 +912,10 @@ class Editor {
         const newBlockRow = wrapBlockWithRow(block);
         editorContentEl.appendChild(newBlockRow);
       });
-    } else {
-      console.log("Empty textarea");
-    }
+    } 
+    // else {
+    //   // console.log("Empty textarea");
+    // }
 
 
     // ---------- Add by Dragging ---------- //
