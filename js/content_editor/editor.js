@@ -2,7 +2,7 @@ class Editor {
   init(selector) {
     // console.log(this.textareaEl);
     const textareaEl = document.querySelector(selector);
-    console.log(textareaEl);
+    // console.log(textareaEl);
 
     // 0. Set defaults
     let defaultTextContent = `<p><br></p>`;
@@ -2370,7 +2370,7 @@ class Editor {
           hideAllOptions();
           // Show row options
           showRowOptions();
-          selectedRow = clickedRow;
+          selectedRow = clickedRowHandle.parentElement;
           selectedBlock = null;
         }
         if (clickedBlock) {
