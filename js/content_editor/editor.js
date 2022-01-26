@@ -1,8 +1,6 @@
 class Editor {
   init(selector) {
-    // console.log(this.textareaEl);
     const textareaEl = document.querySelector(selector);
-    // console.log(textareaEl);
 
     // 0. Set defaults
     let defaultTextContent = `<p><br></p>`;
@@ -432,187 +430,7 @@ class Editor {
     sectionHtmlOptionsEl.appendChild(editHtmlBlockBtn);
 
 
-    // ↓↓↓↓↓↓↓↓↓↓ DEBUG ↓↓↓↓↓↓↓↓↓↓ //
-    let temp = `
-      <!-- Row Options -->
-      <section class="block-options row-options">
-        <button class="select-inner-block-btn toolbar-btn" onclick="selectInnerBlock()">
-          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="currentColor"
-              d="M9,9H15V15H9M7,17H17V7H7M15,5H17V3H15M15,21H17V19H15M19,17H21V15H19M19,9H21V7H19M19,21A2,2 0 0,0 21,19H19M19,13H21V11H19M11,21H13V19H11M9,3H7V5H9M3,17H5V15H3M5,21V19H3A2,2 0 0,0 5,21M19,3V5H21A2,2 0 0,0 19,3M13,3H11V5H13M3,9H5V7H3M7,21H9V19H7M3,13H5V11H3M3,5H5V3A2,2 0 0,0 3,5Z" />
-          </svg>
-        </button>
-        <button class="delete-row-btn toolbar-btn" onclick="deleteRow()">
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
-            <path
-              d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z">
-            </path>
-          </svg>
-        </button>
-      </section>
-
-      <!-- Headings (block) -->
-      <section class="block-options block-text-options block-formatting">
-        <button class="h1-btn toolbar-btn" onclick="makeH1()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M14,18V16H16V6.31L13.5,7.75V5.44L16,4H18V16H20V18H14Z" />
-          </svg>
-        </button>
-        <button class="h2-btn toolbar-btn" onclick="makeH2()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M21,18H15A2,2 0 0,1 13,16C13,15.47 13.2,15 13.54,14.64L18.41,9.41C18.78,9.05 19,8.55 19,8A2,2 0 0,0 17,6A2,2 0 0,0 15,8H13A4,4 0 0,1 17,4A4,4 0 0,1 21,8C21,9.1 20.55,10.1 19.83,10.83L15,16H21V18Z" />
-          </svg>
-        </button>
-        <button class="h3-btn toolbar-btn" onclick="makeH3()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H19A2,2 0 0,1 21,6V16A2,2 0 0,1 19,18H15A2,2 0 0,1 13,16V15H15V16H19V12H15V10H19V6H15V7H13V6A2,2 0 0,1 15,4Z" />
-          </svg>
-        </button>
-        <button class="p-btn toolbar-btn" onclick="makeP()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M13,4A4,4 0 0,1 17,8A4,4 0 0,1 13,12H11V18H9V4H13M13,10A2,2 0 0,0 15,8A2,2 0 0,0 13,6H11V10H13Z" />
-          </svg>
-        </button>
-      </section>
-      
-      <!-- Styling (inline) -->
-      <section class="block-options block-text-options inline-formatting">
-        <button class="bold-btn toolbar-btn" onclick="makeBold()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M13.5,15.5H10V12.5H13.5A1.5,1.5 0 0,1 15,14A1.5,1.5 0 0,1 13.5,15.5M10,6.5H13A1.5,1.5 0 0,1 14.5,8A1.5,1.5 0 0,1 13,9.5H10M15.6,10.79C16.57,10.11 17.25,9 17.25,8C17.25,5.74 15.5,4 13.25,4H7V18H14.04C16.14,18 17.75,16.3 17.75,14.21C17.75,12.69 16.89,11.39 15.6,10.79Z" />
-          </svg>
-        </button>
-        <button class="italic-btn toolbar-btn" onclick="makeItalic()">
-          <svg viewBox="0 0 24 24">
-            <path d="M10,4V7H12.21L8.79,15H6V18H14V15H11.79L15.21,7H18V4H10Z" />
-          </svg>
-        </button>
-        <button class="underline-btn toolbar-btn" onclick="makeUnderline()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M5,21H19V19H5V21M12,17A6,6 0 0,0 18,11V3H15.5V11A3.5,3.5 0 0,1 12,14.5A3.5,3.5 0 0,1 8.5,11V3H6V11A6,6 0 0,0 12,17Z" />
-          </svg>
-        </button>
-        <button class="strikethrough-btn toolbar-btn" onclick="makeStrikethrough()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M23,12V14H18.61C19.61,16.14 19.56,22 12.38,22C4.05,22.05 4.37,15.5 4.37,15.5L8.34,15.55C8.37,18.92 11.5,18.92 12.12,18.88C12.76,18.83 15.15,18.84 15.34,16.5C15.42,15.41 14.32,14.58 13.12,14H1V12H23M19.41,7.89L15.43,7.86C15.43,7.86 15.6,5.09 12.15,5.08C8.7,5.06 9,7.28 9,7.56C9.04,7.84 9.34,9.22 12,9.88H5.71C5.71,9.88 2.22,3.15 10.74,2C19.45,0.8 19.43,7.91 19.41,7.89Z" />
-          </svg>
-        </button>
-        <button class="anchor-btn toolbar-btn" onclick="openAnchorOptionsModal()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z" />
-          </svg>
-        </button>
-        <button class="anchor-btn toolbar-btn" onclick="removeAnchor()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.43 19.12,14.63 17.79,15L19.25,16.44C20.88,15.61 22,13.95 22,12A5,5 0 0,0 17,7M16,11H13.81L15.81,13H16V11M2,4.27L5.11,7.38C3.29,8.12 2,9.91 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12C3.9,10.41 5.11,9.1 6.66,8.93L8.73,11H8V13H10.73L13,15.27V17H14.73L18.74,21L20,19.74L3.27,3L2,4.27Z" />
-          </svg>
-        </button>
-        <button class="superscript-btn toolbar-btn" onclick="makeSuperscript()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M16,7.41L11.41,12L16,16.59L14.59,18L10,13.41L5.41,18L4,16.59L8.59,12L4,7.41L5.41,6L10,10.59L14.59,6L16,7.41M21.85,9H16.97V8L17.86,7.18C18.62,6.54 19.18,6 19.56,5.55C19.93,5.11 20.12,4.7 20.13,4.32C20.14,4.04 20.05,3.8 19.86,3.62C19.68,3.43 19.39,3.34 19,3.33C18.69,3.34 18.42,3.4 18.16,3.5L17.5,3.89L17.05,2.72C17.32,2.5 17.64,2.33 18.03,2.19C18.42,2.05 18.85,2 19.32,2C20.1,2 20.7,2.2 21.1,2.61C21.5,3 21.72,3.54 21.72,4.18C21.71,4.74 21.53,5.26 21.18,5.73C20.84,6.21 20.42,6.66 19.91,7.09L19.27,7.61V7.63H21.85V9Z" />
-          </svg>
-        </button>
-        <button class="subscript-btn toolbar-btn" onclick="makeSubscript()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M16,7.41L11.41,12L16,16.59L14.59,18L10,13.41L5.41,18L4,16.59L8.59,12L4,7.41L5.41,6L10,10.59L14.59,6L16,7.41M21.85,21.03H16.97V20.03L17.86,19.23C18.62,18.58 19.18,18.04 19.56,17.6C19.93,17.16 20.12,16.75 20.13,16.36C20.14,16.08 20.05,15.85 19.86,15.66C19.68,15.5 19.39,15.38 19,15.38C18.69,15.38 18.42,15.44 18.16,15.56L17.5,15.94L17.05,14.77C17.32,14.56 17.64,14.38 18.03,14.24C18.42,14.1 18.85,14 19.32,14C20.1,14.04 20.7,14.25 21.1,14.66C21.5,15.07 21.72,15.59 21.72,16.23C21.71,16.79 21.53,17.31 21.18,17.78C20.84,18.25 20.42,18.7 19.91,19.14L19.27,19.66V19.68H21.85V21.03Z" />
-          </svg>
-        </button>
-        <button class="inline-code-btn toolbar-btn" onclick="makeInlineCode()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" />
-          </svg>
-        </button>
-        <button class="ul-btn toolbar-btn" onclick="makeUL()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M7,5H21V7H7V5M7,13V11H21V13H7M4,4.5A1.5,1.5 0 0,1 5.5,6A1.5,1.5 0 0,1 4,7.5A1.5,1.5 0 0,1 2.5,6A1.5,1.5 0 0,1 4,4.5M4,10.5A1.5,1.5 0 0,1 5.5,12A1.5,1.5 0 0,1 4,13.5A1.5,1.5 0 0,1 2.5,12A1.5,1.5 0 0,1 4,10.5M7,19V17H21V19H7M4,16.5A1.5,1.5 0 0,1 5.5,18A1.5,1.5 0 0,1 4,19.5A1.5,1.5 0 0,1 2.5,18A1.5,1.5 0 0,1 4,16.5Z" />
-          </svg>
-        </button>
-        <button class="ol-btn toolbar-btn" onclick="makeOL()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M7,13V11H21V13H7M7,19V17H21V19H7M7,7V5H21V7H7M3,8V5H2V4H4V8H3M2,17V16H5V20H2V19H4V18.5H3V17.5H4V17H2M4.25,10A0.75,0.75 0 0,1 5,10.75C5,10.95 4.92,11.14 4.79,11.27L3.12,13H5V14H2V13.08L4,11H2V10H4.25Z" />
-          </svg>
-        </button>
-        <button class="inline-img-btn toolbar-btn" onclick="addInlineImg()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M19,19H5V5H19M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M13.96,12.29L11.21,15.83L9.25,13.47L6.5,17H17.5L13.96,12.29Z" />
-          </svg>
-        </button>
-        <button class="remove-formatting-btn toolbar-btn" onclick="removeFormatting()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M6,5V5.18L8.82,8H11.22L10.5,9.68L12.6,11.78L14.21,8H20V5H6M3.27,5L2,6.27L8.97,13.24L6.5,19H9.5L11.07,15.34L16.73,21L18,19.73L3.55,5.27L3.27,5Z" />
-          </svg>
-        </button>
-      </section>
-
-      <!-- Code Options -->
-      <section class="block-options block-code-options">
-        <button class="edit-block-btn toolbar-btn" onclick="openCodeOptionsModal()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-          </svg>
-        </button>
-      </section>
-
-      <!-- Image Options -->
-      <section class="block-options block-image-options">
-        <button class="remove-formatting-btn toolbar-btn" onclick="openImageOptionsModal()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-          </svg>
-        </button>
-      </section>
-
-      <!-- Video Options -->
-      <section class="block-options block-video-options">
-        <button class="remove-formatting-btn toolbar-btn" onclick="openVideoOptionsModal()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-          </svg>
-        </button>
-      </section>
-
-      <!-- Gallery Options -->
-      <section class="block-options block-gallery-options">
-        <button class="edit-block-btn toolbar-btn" onclick="openGalleryOptionsModal()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-          </svg>
-        </button>
-      </section>
-
-      <!-- HTML Options -->
-      <section class="block-options block-html-options">
-        <button class="edit-block-btn toolbar-btn" onclick="openHtmlOptionsModal()">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-          </svg>
-        </button>
-      </section>
-    `;
-    // ↑↑↑↑↑↑↑↑↑↑ DEBUG ↑↑↑↑↑↑↑↑↑↑ //
-
-
+    // Editor Toolbar
     editorEl.appendChild(editorToolbarEl);
 
     // Editor Content
@@ -857,7 +675,23 @@ class Editor {
       }
 
       // Block events
-      newBlock.addEventListener('input', function () {
+      newBlock.addEventListener('input', function (event) {
+        if (type === "text") {
+          document.execCommand("defaultParagraphSeparator", false, "p");
+          const textBlockEl = event.originalTarget;
+
+          if (textBlockEl.innerHTML === "" || textBlockEl.innerHTML === "<br>") {
+            // Set "empty" content to a <p>
+            textBlockEl.innerHTML = defaultTextContent;
+            // Focus on newly create <p> to avoid incorrect syntax
+            const range = document.createRange();
+            const selection = window.getSelection();
+            range.setStart(textBlockEl.childNodes[0], 0);
+            range.collapse(true);
+            selection.removeAllRanges();
+            selection.addRange(range);
+          }
+        }
         save();
       });
 
@@ -889,7 +723,23 @@ class Editor {
         }
 
         // Add block events
-        block.addEventListener('input', function () {
+        block.addEventListener('input', function (event) {
+          document.execCommand("defaultParagraphSeparator", false, "p");
+          if (block.classList.contains('block-text')) {
+            const textBlockEl = event.originalTarget;
+
+            if (textBlockEl.innerHTML === "" || textBlockEl.innerHTML === "<br>") {
+              // Set "empty" content to a <p>
+              textBlockEl.innerHTML = defaultTextContent;
+              // Focus on newly create <p> to avoid incorrect syntax
+              const range = document.createRange();
+              const selection = window.getSelection();
+              range.setStart(textBlockEl.childNodes[0], 0);
+              range.collapse(true);
+              selection.removeAllRanges();
+              selection.addRange(range);
+            }
+          }
           save();
         });
 
@@ -912,10 +762,7 @@ class Editor {
         const newBlockRow = wrapBlockWithRow(block);
         editorContentEl.appendChild(newBlockRow);
       });
-    } 
-    // else {
-    //   // console.log("Empty textarea");
-    // }
+    }
 
 
     // ---------- Add by Dragging ---------- //
@@ -2848,7 +2695,6 @@ class Editor {
       const selectionFocusNodeParent = selectionFocusNode.parentNode;
 
       let codeEl = document.createElement('CODE');
-      // codeEl.setAttribute('class', 'language-py');
 
       const range = selection.getRangeAt(0);
 
@@ -2871,12 +2717,6 @@ class Editor {
         let paragraphIntersection = "";
         let outputText = "";
 
-        // Check if selection is already formatted
-        // console.log(selection);
-        // console.log(selectionAnchorNode);
-        // console.log(selectionFocusNode);
-        // console.log(selectionAnchorNodeParent.tagName === "CODE" || selectionFocusNodeParent === "CODE");
-        // console.log(selectedText);
 
         // Check if selection includes a <code> tag
         if (selectionAnchorNodeParent.tagName === "CODE" || selectionFocusNodeParent.tagName === "CODE") {
@@ -2968,13 +2808,6 @@ class Editor {
 
               }
 
-              // console.log(selectionAnchorNode.data);
-              // console.log(`${anchorIntersection.length} → ${anchorIntersection}`);
-              // console.log(paragraphIntersection);
-              // console.log(`${focusIntersection.length} → ${focusIntersection}`);
-              // console.log(selectionFocusNode.data);
-              // console.log(outputText);
-
               // Remove selection and formatted text
               range.deleteContents();
               selectionAnchorNodeParent.remove();
@@ -2989,8 +2822,6 @@ class Editor {
         else {
           // console.log("Neither is <code>");
           // Create <code> element
-          // let codeEl = document.createElement('CODE');
-          // codeEl.setAttribute('class', 'language-py');
           codeEl.textContent = selectedText;
 
           // Remove selection
@@ -3000,26 +2831,6 @@ class Editor {
           range.insertNode(codeEl);
           // range.surroundContents(codeEl);
         }
-
-
-        // range.surroundContents(codeEl);
-
-        // if (selectionParent.tagName === "CODE") {
-        // 	// if true → remove formatting
-        // 	const codeText = selectionParent.innerText;
-        // 	selectionParent.remove();
-        // 	document.execCommand('insertText', false, codeText);
-        // } else {
-        // 	// else → apply formatting
-        // 	let codeEl = document.createElement('CODE');
-        // 	codeEl.setAttribute('class', 'language-py');
-        // 	codeEl.textContent = selectedText;
-
-        // 	let range = selection.getRangeAt(0);
-        // 	// range.deleteContents();
-        // 	// range.insertNode(codeEl);
-        // 	range.surroundContents(codeEl);
-        // }
 
       } // end of insideEditorBlock()
 
@@ -3081,16 +2892,6 @@ class Editor {
 
     // Callback function to execute when mutations are observed
     const callback = function (mutationsList, observer) {
-      // Use traditional 'for loops' for IE 11
-      // for (const mutation of mutationsList) {
-      // 	if (mutation.type === 'childList') {
-      // 		console.log('A child node has been added or removed.');
-      // 	}
-      // 	else if (mutation.type === 'attributes') {
-      // 		console.log('The ' + mutation.attributeName + ' attribute was modified.');
-      // 	}
-      // }
-      console.log("Saved changes");
       save();
     };
 
