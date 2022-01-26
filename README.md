@@ -1,4 +1,4 @@
-# Vanilla JS WYSIWYG Content Editor (Alpha)
+# Vanilla JS WYSIWYG Content Editor - Alpha 0.1
 
 This project aims to create a fully open source Vanilla JS WYSIWYG content editor for CMS' that is easy to customize and use.
 
