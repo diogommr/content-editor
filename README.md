@@ -10,7 +10,7 @@ It's fully modular in order to make it easy to extend and customize.
 
 Implemented blocks:
 - Text (supports H1, H2, H3, P, basic inline formatting including inline code)
-- Code
+- Code (with language selection, as well as code highlighting for selected language)
 - Image
 - Video (supports .mp4, Youtube and Video embeds)
 - Gallery (only images at the moment, with support for video planned)
@@ -29,6 +29,8 @@ While this editor can be used as a standalone editor in any HTML project, it is 
 This way, and since all content changes are saved in real-time, when submitting the page or blog article form all the HTML visible on the editor is then saved to the textarea value for easy retrieval by the frontend.
 
 Note that at the moment there is no code sanitation. You are literally saving the HTML that you are seeing to the DB (with the exception of editor-specific HTML, such as editing buttons, among others), so bear in mind some security considerations are to be taken when accepting input from untrusted users. This can be easily solved, however, by scraping the parts of the editor that accept raw HTML as input, namely, the HTML Block.
+
+Also, I've noticed that for some reason it doesn't work in Chrome at the moment (probably due to some incompatibility with the Sortable.js library). I'll address this issue in a future update, namely, when I refactor the code to deal with the now deprecated contenteditable API (like the .execCommand for example).
 
 
 &nbsp;&nbsp;
